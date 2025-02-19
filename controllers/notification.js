@@ -24,7 +24,7 @@ const broadcastNotification = async (req, res) => {
     const users = await User.find().select("device_token-_id");
     const deviceTokens = users?.map((user) => user.device_token);
     const response = await admin.messaging().sendEachForMulticast({
-      token: deviceTokens,
+      tokens: deviceTokens,
       data: {
         title: title,
         body: description,
